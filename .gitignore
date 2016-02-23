@@ -26,3 +26,14 @@
 *.exe
 *.out
 *.app
+
+# Qt Creator
+**/*.user
+**/*.user.*
+**/build-*/
+
+# KDE
+**/.directory
+
+# Vim
+*.swp
