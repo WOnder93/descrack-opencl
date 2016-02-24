@@ -40,7 +40,7 @@ int main()
                 });
 
     std::cout << "Running benchmark..." << std::endl;
-    std::cout << config.benchmark(8);
+    std::cout << config.benchmark(8) / 1e6 << " Mkeys/second" << std::endl;;
     */
     return 0;
 }
