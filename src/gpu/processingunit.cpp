@@ -34,6 +34,10 @@ ProcessingUnit::ProcessingUnit(const DeviceContext *context,
     cdBaseBuffer = cl::Buffer(clContext, CL_MEM_READ_ONLY, cdBaseBufferSize);
     resultBuffer = cl::Buffer(clContext, CL_MEM_WRITE_ONLY, resultBufferSize);
 
+    mappedCdBaseBuffer = cmdQueue.enqueueMapBuffer(
+                cdBaseBuffer, true, CL_MAP_WRITE, 0, cdBaseBufferSize);
+    mappedResultBuffer = nullptr;
+
     kernel.setArg<cl::Buffer>(0, programContext->getRefInputBuffer());
     kernel.setArg<cl::Buffer>(1, programContext->getRefOutputBuffer());
     kernel.setArg<cl::Buffer>(2, cdBaseBuffer);
@@ -44,41 +48,43 @@ ProcessingUnit::ProcessingUnit(const DeviceContext *context,
 void ProcessingUnit::setBatch(std::uint_fast64_t index)
 {
     batch = index;
-    void *hostBuffer = cmdQueue.enqueueMapBuffer(
-                cdBaseBuffer, true, CL_MAP_WRITE,
-                0, cdBaseBufferSize);
 
     auto programContext = context->getProgramContext();
-    programContext->writeCdBase(hostBuffer, index);
-
-    cmdQueue.enqueueUnmapMemObject(cdBaseBuffer, hostBuffer);
+    programContext->writeCdBase(mappedCdBaseBuffer, index);
 }
 
 bool ProcessingUnit::getResult(std::uint_fast64_t &key)
 {
-    auto mappedResultBuffer = static_cast<cl_uint *>(
-                cmdQueue.enqueueMapBuffer(
-                    resultBuffer, true, CL_MAP_READ,
-                    0, resultBufferSize));
-
     // FIXME: allow reporting multiple found keys (just in case)
-    bool res = false;
     auto count = mappedResultBuffer[0];
     if (count > 0) {
         std::uint_fast64_t cd = (batch << resultBits) |
                 std::uint_fast64_t(mappedResultBuffer[1]);
         key = DesUtils::keyFromCd(cd);
-        res = true;
+        return true;
     }
-    cmdQueue.enqueueUnmapMemObject(resultBuffer, mappedResultBuffer);
-    return res;
+    return false;
 }
 
 void ProcessingUnit::beginProcessing()
 {
+    if (mappedCdBaseBuffer != nullptr) {
+        cmdQueue.enqueueUnmapMemObject(cdBaseBuffer, mappedCdBaseBuffer);
+    }
+    if (mappedResultBuffer != nullptr) {
+        cmdQueue.enqueueUnmapMemObject(resultBuffer, mappedResultBuffer);
+    }
+
     cmdQueue.enqueueNDRangeKernel(
-                kernel, cl::NullRange, cl::NDRange(items), cl::NDRange(groupSize),
-                nullptr, &event);
+                kernel,
+                cl::NullRange, cl::NDRange(items), cl::NDRange(groupSize));
+
+    mappedCdBaseBuffer = cmdQueue.enqueueMapBuffer(
+                cdBaseBuffer, false, CL_MAP_WRITE, 0, cdBaseBufferSize);
+    mappedResultBuffer = static_cast<cl_uint *>(
+                cmdQueue.enqueueMapBuffer(
+                    resultBuffer, false, CL_MAP_READ, 0, resultBufferSize,
+                    nullptr, &event));
 }
 
 void ProcessingUnit::endProcessing()

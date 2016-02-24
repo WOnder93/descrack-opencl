@@ -30,6 +30,9 @@ private:
     std::size_t cdBaseBufferSize;
     std::size_t resultBufferSize;
 
+    void *mappedCdBaseBuffer;
+    cl_uint *mappedResultBuffer;
+
     cl::Kernel kernel;
     cl::Event event;
 
