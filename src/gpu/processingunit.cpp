@@ -23,13 +23,13 @@ ProcessingUnit::ProcessingUnit(const DeviceContext *context,
     kernel = cl::Kernel(programContext->getProgram(), "des_kernel");
 
     items = std::size_t(1) << (bitsGlobal - bitsThread);
-    resultBits = programContext->getVectorBits() + bitsGlobal;
+    resultBits = programContext->getVectorLevel() + bitsGlobal;
 
     groupSize = std::min(items, kernel.getWorkGroupInfo<CL_KERNEL_WORK_GROUP_SIZE>(device));
     groupCount = BLOCK_COUNT(groupSize, items);
 
-    std::size_t tmpBufferSize = groupSize * 32 * programContext->getVectorLength();
-    cdBaseBufferSize = (56 - bitsGlobal) * programContext->getVectorLength();
+    std::size_t tmpBufferSize = groupSize * 32 * programContext->getVectorBytes();
+    cdBaseBufferSize = (56 - bitsGlobal) * programContext->getVectorBytes();
     resultBufferSize = (MAX_FOUND_KEYS + 1) * sizeof(cl_uint);
 
     cdBaseBuffer = cl::Buffer(clContext, CL_MEM_READ_ONLY, cdBaseBufferSize);

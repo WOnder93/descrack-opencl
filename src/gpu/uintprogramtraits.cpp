@@ -41,11 +41,11 @@ void UIntProgramTraits::writeCdBase(void *hostBuffer, std::uint_fast64_t cd, std
 {
     cl_uint *uintBuffer = static_cast<cl_uint *>(hostBuffer);
 
-    for (std::size_t i = 0; i < vectorBits; i++) {
+    for (std::size_t i = 0; i < vectorLevel; i++) {
         uintBuffer[i] = CD_PREFIX[i];
     }
-    for (std::size_t i = 0; i < bits - vectorBits; i++) {
-        uintBuffer[vectorBits + i] = ((cd >> i) & 1) != 0 ? 0xffffffffu : 0x0u;
+    for (std::size_t i = 0; i < bits - vectorLevel; i++) {
+        uintBuffer[vectorLevel + i] = ((cd >> i) & 1) != 0 ? 0xffffffffu : 0x0u;
     }
 }
 

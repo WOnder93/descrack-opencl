@@ -6,10 +6,10 @@ namespace gpu {
 
 ProgramContext::ProgramContext(
         const DeviceListContext *dlContext, std::size_t bitsGlobal,
-        cl::Program program, std::size_t vectorBits,
+        cl::Program program, std::size_t vectorLevel,
         CdWriter cdBaseWriter, RefDataWriter refDataWriter)
     : dlContext(dlContext), program(program), bitsGlobal(bitsGlobal),
-      vectorBits(vectorBits),
+      vectorLevel(vectorLevel),
       cdBaseWriter(cdBaseWriter), refDataWriter(refDataWriter)
 {
     auto &clContext = dlContext->getClContext();

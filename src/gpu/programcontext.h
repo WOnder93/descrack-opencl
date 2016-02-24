@@ -21,7 +21,7 @@ private:
     cl::Program program;
 
     std::size_t bitsGlobal;
-    std::size_t vectorBits;
+    std::size_t vectorLevel;
 
     CdWriter cdBaseWriter;
     RefDataWriter refDataWriter;
@@ -31,7 +31,7 @@ private:
 
     ProgramContext(const DeviceListContext *dlContext,
                    std::size_t bitsGlobal, cl::Program program,
-                   std::size_t vectorBits,
+                   std::size_t vectorLevel,
                    CdWriter cdBaseWriter, RefDataWriter refDataWriter);
 
 public:
@@ -44,7 +44,7 @@ public:
         return ProgramContext {
             dlContext, bitsGlobal,
             Traits::loadProgram(dlContext, bitsGlobal, config),
-            Traits::vectorBits, Traits::writeCdBase, Traits::writeReferenceData
+            Traits::vectorLevel, Traits::writeCdBase, Traits::writeReferenceData
         };
     }
 
@@ -53,14 +53,15 @@ public:
     cl::Program getProgram() const { return program; }
 
     std::size_t getBitsGlobal() const { return bitsGlobal; }
-    std::size_t getVectorBits() const { return vectorBits; }
-    std::size_t getVectorLength() const { return 1 << vectorBits; }
+    std::size_t getVectorLevel() const { return vectorLevel; }
+    std::size_t getVectorBits() const { return 1 << vectorLevel; }
+    std::size_t getVectorBytes() const { return 1 << (vectorLevel - 3); }
 
     cl::Buffer getRefInputBuffer() const { return refInputBuffer; }
     cl::Buffer getRefOutputBuffer() const { return refOutputBuffer; }
 
-    std::size_t getRefInputBufferSize() const { return 64 * getVectorLength(); }
-    std::size_t getRefOutputBufferSize() const { return 64 * getVectorLength(); }
+    std::size_t getRefInputBufferSize() const { return 64 * getVectorBytes(); }
+    std::size_t getRefOutputBufferSize() const { return 64 * getVectorBytes(); }
 
     void writeCdBase(void *hostBuffer, std::uint_fast64_t batch) const;
     void writeRefData(cl::CommandQueue cmdQueue, std::uint_fast64_t refInput,

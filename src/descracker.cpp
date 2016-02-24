@@ -100,19 +100,19 @@ DesCracker::DesCracker(
 std::uint_fast64_t DesCracker::getBatchFromKey(std::uint_fast64_t key) const
 {
     auto cd = DesUtils::keyToCd(key);
-    return cd >> (gpu::UIntProgramTraits::vectorBits + bitsGlobal);
+    return cd >> (gpu::UIntProgramTraits::vectorLevel + bitsGlobal);
 }
 
 std::uint_fast64_t DesCracker::getBatchCount() const
 {
     return static_cast<std::uint_fast64_t>(1)
-            << (56 - gpu::UIntProgramTraits::vectorBits - bitsGlobal);
+            << (56 - gpu::UIntProgramTraits::vectorLevel - bitsGlobal);
 }
 
 std::uint_fast64_t DesCracker::getKeysInBatch() const
 {
     return static_cast<std::uint_fast64_t>(1)
-            << (gpu::UIntProgramTraits::vectorBits + bitsGlobal);
+            << (gpu::UIntProgramTraits::vectorLevel + bitsGlobal);
 }
 
 gpu::KernelConfigData DesCracker::findOptimalConfiguration(std::uint_fast64_t batches) const
