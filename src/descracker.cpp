@@ -99,10 +99,8 @@ DesCracker::DesCracker(
 
 std::uint_fast64_t DesCracker::getBatchFromKey(std::uint_fast64_t key) const
 {
-    constexpr auto mask = (static_cast<std::uint_fast64_t>(1)
-                           << (56 - gpu::UIntProgramTraits::vectorBits)) - 1;
     auto cd = DesUtils::keyToCd(key);
-    return (cd & mask) >> bitsGlobal;
+    return cd >> (gpu::UIntProgramTraits::vectorBits + bitsGlobal);
 }
 
 std::uint_fast64_t DesCracker::getBatchCount() const

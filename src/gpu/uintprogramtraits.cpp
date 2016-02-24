@@ -17,7 +17,7 @@ static const int IP[64] = {
     63,    55,   47,    39,    31,   23,    15,    7,
 };
 
-static const cl_uint CD_SUFFIX[] = {
+static const cl_uint CD_PREFIX[] = {
     0xAAAAAAAAU,
     0xCCCCCCCCU,
     0xF0F0F0F0U,
@@ -41,13 +41,11 @@ void UIntProgramTraits::writeCdBase(void *hostBuffer, std::uint_fast64_t cd, std
 {
     cl_uint *uintBuffer = static_cast<cl_uint *>(hostBuffer);
 
-    std::size_t batchBits = bits - vectorBits;
-
-    for (std::size_t i = 0; i < batchBits; i++) {
-        uintBuffer[i] = ((cd >> i) & 1) != 0 ? 0xffffffffu : 0x0u;
-    }
     for (std::size_t i = 0; i < vectorBits; i++) {
-        uintBuffer[batchBits + i] = CD_SUFFIX[i];
+        uintBuffer[i] = CD_PREFIX[i];
+    }
+    for (std::size_t i = 0; i < bits - vectorBits; i++) {
+        uintBuffer[vectorBits + i] = ((cd >> i) & 1) != 0 ? 0xffffffffu : 0x0u;
     }
 }
 

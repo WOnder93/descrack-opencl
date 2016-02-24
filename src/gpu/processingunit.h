@@ -15,6 +15,7 @@ private:
     const DeviceContext *context;
 
     std::size_t items;
+    std::size_t resultBits;
 
     cl::CommandQueue cmdQueue;
 
