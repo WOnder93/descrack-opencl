@@ -58,8 +58,8 @@ bool ProcessingUnit::getResult(std::uint_fast64_t &key)
 {
     auto mappedResultBuffer = static_cast<cl_uint *>(
                 cmdQueue.enqueueMapBuffer(
-                    resultBuffer, true, CL_MAP_READ, 0,
-                    resultBufferSize, nullptr, &event));
+                    resultBuffer, true, CL_MAP_READ,
+                    0, resultBufferSize));
 
     // FIXME: allow reporting multiple found keys (just in case)
     bool res = false;
