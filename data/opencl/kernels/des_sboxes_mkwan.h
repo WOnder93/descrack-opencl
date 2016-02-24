@@ -4,15 +4,15 @@
 /* DES s-boxes from Matthew Kwan */
 
 #define s0(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
-    des_vector_t x1, x2, x3, x4, x5, x6, x7, x8; \
-    des_vector_t x9, x10, x11, x12, x13, x14, x15, x16; \
-    des_vector_t x17, x18, x19, x20, x21, x22, x23, x24; \
-    des_vector_t x25, x26, x27, x28, x29, x30, x31, x32; \
-    des_vector_t x33, x34, x35, x36, x37, x38, x39, x40; \
-    des_vector_t x41, x42, x43, x44, x45, x46, x47, x48; \
-    des_vector_t x49, x50, x51, x52, x53, x54, x55, x56; \
-    des_vector_t x57, x58, x59, x60, x61, x62, x63; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector x1, x2, x3, x4, x5, x6, x7, x8; \
+    des_vector x9, x10, x11, x12, x13, x14, x15, x16; \
+    des_vector x17, x18, x19, x20, x21, x22, x23, x24; \
+    des_vector x25, x26, x27, x28, x29, x30, x31, x32; \
+    des_vector x33, x34, x35, x36, x37, x38, x39, x40; \
+    des_vector x41, x42, x43, x44, x45, x46, x47, x48; \
+    des_vector x49, x50, x51, x52, x53, x54, x55, x56; \
+    des_vector x57, x58, x59, x60, x61, x62, x63; \
 \
     x1 = v_not(a4); \
     x2 = v_not(a1); \
@@ -84,14 +84,14 @@
 } while (0)
 
 #define s1(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
-    des_vector_t x1, x2, x3, x4, x5, x6, x7, x8; \
-    des_vector_t x9, x10, x11, x12, x13, x14, x15, x16; \
-    des_vector_t x17, x18, x19, x20, x21, x22, x23, x24; \
-    des_vector_t x25, x26, x27, x28, x29, x30, x31, x32; \
-    des_vector_t x33, x34, x35, x36, x37, x38, x39, x40; \
-    des_vector_t x41, x42, x43, x44, x45, x46, x47, x48; \
-    des_vector_t x49, x50, x51, x52, x53, x54, x55, x56; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector x1, x2, x3, x4, x5, x6, x7, x8; \
+    des_vector x9, x10, x11, x12, x13, x14, x15, x16; \
+    des_vector x17, x18, x19, x20, x21, x22, x23, x24; \
+    des_vector x25, x26, x27, x28, x29, x30, x31, x32; \
+    des_vector x33, x34, x35, x36, x37, x38, x39, x40; \
+    des_vector x41, x42, x43, x44, x45, x46, x47, x48; \
+    des_vector x49, x50, x51, x52, x53, x54, x55, x56; \
 \
     x1 = v_not(a5); \
     x2 = v_not(a1); \
@@ -156,15 +156,15 @@
 } while (0)
 
 #define s2(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
-    des_vector_t x1, x2, x3, x4, x5, x6, x7, x8; \
-    des_vector_t x9, x10, x11, x12, x13, x14, x15, x16; \
-    des_vector_t x17, x18, x19, x20, x21, x22, x23, x24; \
-    des_vector_t x25, x26, x27, x28, x29, x30, x31, x32; \
-    des_vector_t x33, x34, x35, x36, x37, x38, x39, x40; \
-    des_vector_t x41, x42, x43, x44, x45, x46, x47, x48; \
-    des_vector_t x49, x50, x51, x52, x53, x54, x55, x56; \
-    des_vector_t x57; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector x1, x2, x3, x4, x5, x6, x7, x8; \
+    des_vector x9, x10, x11, x12, x13, x14, x15, x16; \
+    des_vector x17, x18, x19, x20, x21, x22, x23, x24; \
+    des_vector x25, x26, x27, x28, x29, x30, x31, x32; \
+    des_vector x33, x34, x35, x36, x37, x38, x39, x40; \
+    des_vector x41, x42, x43, x44, x45, x46, x47, x48; \
+    des_vector x49, x50, x51, x52, x53, x54, x55, x56; \
+    des_vector x57; \
 \
     x1 = v_not(a5); \
     x2 = v_not(a6); \
@@ -230,13 +230,13 @@
 } while (0)
 
 #define s3(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
-    des_vector_t x1, x2, x3, x4, x5, x6, x7, x8; \
-    des_vector_t x9, x10, x11, x12, x13, x14, x15, x16; \
-    des_vector_t x17, x18, x19, x20, x21, x22, x23, x24; \
-    des_vector_t x25, x26, x27, x28, x29, x30, x31, x32; \
-    des_vector_t x33, x34, x35, x36, x37, x38, x39, x40; \
-    des_vector_t x41, x42; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector x1, x2, x3, x4, x5, x6, x7, x8; \
+    des_vector x9, x10, x11, x12, x13, x14, x15, x16; \
+    des_vector x17, x18, x19, x20, x21, x22, x23, x24; \
+    des_vector x25, x26, x27, x28, x29, x30, x31, x32; \
+    des_vector x33, x34, x35, x36, x37, x38, x39, x40; \
+    des_vector x41, x42; \
 \
     x1 = v_not(a1); \
     x2 = v_not(a3); \
@@ -287,15 +287,15 @@
 } while (0)
 
 #define s4(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
-    des_vector_t x1, x2, x3, x4, x5, x6, x7, x8; \
-    des_vector_t x9, x10, x11, x12, x13, x14, x15, x16; \
-    des_vector_t x17, x18, x19, x20, x21, x22, x23, x24; \
-    des_vector_t x25, x26, x27, x28, x29, x30, x31, x32; \
-    des_vector_t x33, x34, x35, x36, x37, x38, x39, x40; \
-    des_vector_t x41, x42, x43, x44, x45, x46, x47, x48; \
-    des_vector_t x49, x50, x51, x52, x53, x54, x55, x56; \
-    des_vector_t x57, x58, x59, x60, x61, x62; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector x1, x2, x3, x4, x5, x6, x7, x8; \
+    des_vector x9, x10, x11, x12, x13, x14, x15, x16; \
+    des_vector x17, x18, x19, x20, x21, x22, x23, x24; \
+    des_vector x25, x26, x27, x28, x29, x30, x31, x32; \
+    des_vector x33, x34, x35, x36, x37, x38, x39, x40; \
+    des_vector x41, x42, x43, x44, x45, x46, x47, x48; \
+    des_vector x49, x50, x51, x52, x53, x54, x55, x56; \
+    des_vector x57, x58, x59, x60, x61, x62; \
 \
     x1 = v_not(a6); \
     x2 = v_not(a3); \
@@ -366,15 +366,15 @@
 } while (0)
 
 #define s5(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
-    des_vector_t x1, x2, x3, x4, x5, x6, x7, x8; \
-    des_vector_t x9, x10, x11, x12, x13, x14, x15, x16; \
-    des_vector_t x17, x18, x19, x20, x21, x22, x23, x24; \
-    des_vector_t x25, x26, x27, x28, x29, x30, x31, x32; \
-    des_vector_t x33, x34, x35, x36, x37, x38, x39, x40; \
-    des_vector_t x41, x42, x43, x44, x45, x46, x47, x48; \
-    des_vector_t x49, x50, x51, x52, x53, x54, x55, x56; \
-    des_vector_t x57; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector x1, x2, x3, x4, x5, x6, x7, x8; \
+    des_vector x9, x10, x11, x12, x13, x14, x15, x16; \
+    des_vector x17, x18, x19, x20, x21, x22, x23, x24; \
+    des_vector x25, x26, x27, x28, x29, x30, x31, x32; \
+    des_vector x33, x34, x35, x36, x37, x38, x39, x40; \
+    des_vector x41, x42, x43, x44, x45, x46, x47, x48; \
+    des_vector x49, x50, x51, x52, x53, x54, x55, x56; \
+    des_vector x57; \
 \
     x1 = v_not(a2); \
     x2 = v_not(a5); \
@@ -440,15 +440,15 @@
 } while (0)
 
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
-    des_vector_t x1, x2, x3, x4, x5, x6, x7, x8; \
-    des_vector_t x9, x10, x11, x12, x13, x14, x15, x16; \
-    des_vector_t x17, x18, x19, x20, x21, x22, x23, x24; \
-    des_vector_t x25, x26, x27, x28, x29, x30, x31, x32; \
-    des_vector_t x33, x34, x35, x36, x37, x38, x39, x40; \
-    des_vector_t x41, x42, x43, x44, x45, x46, x47, x48; \
-    des_vector_t x49, x50, x51, x52, x53, x54, x55, x56; \
-    des_vector_t x57; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector x1, x2, x3, x4, x5, x6, x7, x8; \
+    des_vector x9, x10, x11, x12, x13, x14, x15, x16; \
+    des_vector x17, x18, x19, x20, x21, x22, x23, x24; \
+    des_vector x25, x26, x27, x28, x29, x30, x31, x32; \
+    des_vector x33, x34, x35, x36, x37, x38, x39, x40; \
+    des_vector x41, x42, x43, x44, x45, x46, x47, x48; \
+    des_vector x49, x50, x51, x52, x53, x54, x55, x56; \
+    des_vector x57; \
 \
     x1 = v_not(a2); \
     x2 = v_not(a5); \
@@ -514,14 +514,14 @@
 } while (0)
 
 #define s7(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
-    des_vector_t x1, x2, x3, x4, x5, x6, x7, x8; \
-    des_vector_t x9, x10, x11, x12, x13, x14, x15, x16; \
-    des_vector_t x17, x18, x19, x20, x21, x22, x23, x24; \
-    des_vector_t x25, x26, x27, x28, x29, x30, x31, x32; \
-    des_vector_t x33, x34, x35, x36, x37, x38, x39, x40; \
-    des_vector_t x41, x42, x43, x44, x45, x46, x47, x48; \
-    des_vector_t x49, x50, x51, x52, x53, x54; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector x1, x2, x3, x4, x5, x6, x7, x8; \
+    des_vector x9, x10, x11, x12, x13, x14, x15, x16; \
+    des_vector x17, x18, x19, x20, x21, x22, x23, x24; \
+    des_vector x25, x26, x27, x28, x29, x30, x31, x32; \
+    des_vector x33, x34, x35, x36, x37, x38, x39, x40; \
+    des_vector x41, x42, x43, x44, x45, x46, x47, x48; \
+    des_vector x49, x50, x51, x52, x53, x54; \
 \
     x1 = v_not(a1); \
     x2 = v_not(a4); \

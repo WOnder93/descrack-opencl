@@ -1,13 +1,13 @@
 #ifndef DES_VECTOR_UINT_H
 #define DES_VECTOR_UINT_H
 
-typedef uint des_vector_t;
+typedef uint des_vector;
 
 #define DES_VECTOR_LEVEL 5
 #define DES_VECTOR_BITS (1 << DES_VECTOR_LEVEL)
 
-#define v_zero (des_vector_t)0u
-#define v_ones (des_vector_t)0xffffffffu
+#define v_zero (des_vector)0u
+#define v_ones (des_vector)0xffffffffu
 
 #define v_and(a, b) ((a) & (b))
 #define v_or(a, b)  ((a) | (b))
@@ -27,7 +27,7 @@ typedef uint des_vector_t;
 #define v_mask_is_zero(a, mask)     v_is_zero(v_and(a, mask))
 #define v_mask_isnot_zero(a, mask)  v_isnot_zero(v_and(a, mask))
 
-#define v_bit(i) ((des_vector_t)0x1u << (i))
+#define v_bit(i) ((des_vector)0x1u << (i))
 
 #define v_bitselect(a, b, c) bitselect(a, b, c)
 

@@ -60,8 +60,8 @@
 
 __kernel
 void des_kernel(
-        __constant des_vector_t *input,
-        __constant des_vector_t *output,
+        __constant des_vector *input,
+        __constant des_vector *output,
         __constant uint *cd_base,
         __global uint *result_buffer,
         uint bits_thread)
@@ -72,18 +72,18 @@ void des_kernel(
         result_buffer[0] = 0;
     }
 
-    __constant des_vector_t * const i0 = input;
-    __constant des_vector_t * const i1 = input + 32;
+    __constant des_vector * const i0 = input;
+    __constant des_vector * const i1 = input + 32;
 
-    __constant des_vector_t * const o0 = output;
-    __constant des_vector_t * const o1 = output + 32;
+    __constant des_vector * const o0 = output;
+    __constant des_vector * const o1 = output + 32;
 
     uint count = (uint)1 << bits_thread;
     uint cd_l = (uint)id << bits_thread;
     uint cd_u = cd_l + count;
     for (uint cd = cd_l; cd < cd_u; cd++) {
-        des_vector_t b0[32];
-        des_vector_t b1[32];
+        des_vector b0[32];
+        des_vector b1[32];
         S_BOXES(0, cd, cd_base, i0, i1, b0);
         S_BOXES(1, cd, cd_base, i1, b0, b1);
         S_BOXES(2, cd, cd_base, b0, b1, b0);
@@ -101,7 +101,7 @@ void des_kernel(
         S_BOXES(E, cd, cd_base, b0, b1, b0);
         S_BOXES(F, cd, cd_base, b1, b0, b1);
 
-        des_vector_t match = v_zero;
+        des_vector match = v_zero;
         for (size_t i = 0; i < 32; i++) {
             match = v_or(match, v_xor(b0[i], o1[i]));
         }

@@ -30,7 +30,7 @@
  */
 
 /* shim definitions: */
-#define vtype des_vector_t
+#define vtype des_vector
 #define vnot(r, a) r = v_not(a)
 #define vand(r, a, b) r = v_and(a, b)
 #define vor(r, a, b) r = v_or(a, b)
@@ -40,7 +40,7 @@
 #if !defined(CONFIG_OPENWALL_SBOX_0) || CONFIG_OPENWALL_SBOX_0 == 1
 /* s1-00104, 49 gates, 18 regs, 13 andn, 2/7/41/79/122 stalls, 75 biop */
 #define s0(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x55005500, x5A0F5A0F, x3333FFFF, x66666666, x22226666, x2D2D6969, \
         x25202160; \
     vtype x00FFFF00, x33CCCC33, x4803120C, x2222FFFF, x6A21EDF3, x4A01CC93; \
@@ -116,7 +116,7 @@
 #elif CONFIG_OPENWALL_SBOX_0 == 2
 /* s1-00484, 49 gates, 17 regs, 11 andn, 4/9/39/79/120 stalls, 74 biop */
 #define s0(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x55005500, x5A0F5A0F, x3333FFFF, x66666666, x22226666, x2D2D6969, \
         x25202160; \
     vtype x00FFFF00, x33CCCC33, x4803120C, x2222FFFF, x6A21EDF3, x4A01CC93; \
@@ -192,7 +192,7 @@
 #elif CONFIG_OPENWALL_SBOX_0 == 3
 /* s1-01753, 49 gates, 17/18 regs, 14 andn, 3/16/48/88/132 stalls, 76 biop */
 #define s0(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x55005500, x5A0F5A0F, x3333FFFF, x66666666, x22226666, x2D2D6969, \
         x25202160; \
     vtype x00FFFF00, x33CCCC33, x4803120C, x2222FFFF, x6A21EDF3, x4A01CC93; \
@@ -272,7 +272,7 @@
 #if !defined(CONFIG_OPENWALL_SBOX_1) || CONFIG_OPENWALL_SBOX_1 == 1
 /* s2-016251, 44 gates, 14 regs, 13 andn, 1/9/22/61/108 stalls, 66 biop */
 #define s1(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x33CC33CC; \
     vtype x55550000, x00AA00FF, x33BB33FF; \
     vtype x33CC0000, x11441144, x11BB11BB, x003311BB; \
@@ -344,7 +344,7 @@
 #elif CONFIG_OPENWALL_SBOX_1 == 2
 /* s2-016276, 44 gates, 15 regs, 11 andn, 1/9/24/59/104 stalls, 67 biop */
 #define s1(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x33CC33CC; \
     vtype x55550000, x00AA00FF, x33BB33FF; \
     vtype x33CC0000, x11441144, x11BB11BB, x003311BB; \
@@ -416,7 +416,7 @@
 #elif CONFIG_OPENWALL_SBOX_1 == 3
 /* s2-016277, 44 gates, 15 regs, 12 andn, 4/15/35/74/121 stalls, 65 biop */
 #define s1(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x33CC33CC; \
     vtype x55550000, x00AA00FF, x33BB33FF; \
     vtype x33CC0000, x11441144, x11BB11BB, x003311BB; \
@@ -488,7 +488,7 @@
 #elif CONFIG_OPENWALL_SBOX_1 == 4
 /* s2-016380, 44 gates, 14/15 regs, 12 andn, 1/9/27/55/99 stalls, 68 biop */
 #define s1(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x33CC33CC; \
     vtype x55550000, x00AA00FF, x33BB33FF; \
     vtype x33CC0000, x11441144, x11BB11BB, x003311BB; \
@@ -560,7 +560,7 @@
 #elif CONFIG_OPENWALL_SBOX_1 == 5
 /* s2-016520, 44 gates, 15 regs, 13 andn, 5/17/41/78/125 stalls, 68 biop */
 #define s1(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x33CC33CC; \
     vtype x55550000, x00AA00FF, x33BB33FF; \
     vtype x33CC0000, x11441144, x11BB11BB, x003311BB; \
@@ -636,7 +636,7 @@
 #if !defined(CONFIG_OPENWALL_SBOX_2) || CONFIG_OPENWALL_SBOX_2 == 1
 /* s3-000406, 46 gates, 15 regs, 12 andn, 3/7/19/50/89 stalls, 70 biop */
 #define s2(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x44444444, x0F0FF0F0, x4F4FF4F4, x00FFFF00, x00AAAA00, x4FE55EF4; \
     vtype x3C3CC3C3, x3C3C0000, x7373F4F4, x0C840A00; \
     vtype x00005EF4, x00FF5EFF, x00555455, x3C699796; \
@@ -708,7 +708,7 @@
 #elif CONFIG_OPENWALL_SBOX_2 == 2
 /* s3-000426, 46 gates, 16 regs, 14 andn, 2/5/12/35/75 stalls, 68 biop */
 #define s2(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x44444444, x0F0FF0F0, x4F4FF4F4, x00FFFF00, x00AAAA00, x4FE55EF4; \
     vtype x3C3CC3C3, x3C3C0000, x7373F4F4, x0C840A00; \
     vtype x00005EF4, x00FF5EFF, x00555455, x3C699796; \
@@ -780,7 +780,7 @@
 #elif CONFIG_OPENWALL_SBOX_2 == 3
 /* s3-000470, 46 gates, 15 regs, 15 andn, 2/5/10/30/69 stalls, 69 biop */
 #define s2(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x44444444, x0F0FF0F0, x4F4FF4F4, x00FFFF00, x00AAAA00, x4FE55EF4; \
     vtype x3C3CC3C3, x3C3C0000, x7373F4F4, x0C840A00; \
     vtype x00005EF4, x00FF5EFF, x00555455, x3C699796; \
@@ -852,7 +852,7 @@
 #elif CONFIG_OPENWALL_SBOX_2 == 4
 /* s3-001117, 46 gates, 17 regs, 10 andn, 2/4/19/47/92 stalls, 69 biop */
 #define s2(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x44444444, x0F0FF0F0, x4F4FF4F4, x00FFFF00, x00AAAA00, x4FE55EF4; \
     vtype x3C3CC3C3, x3C3C0000, x7373F4F4, x0C840A00; \
     vtype x00005EF4, x00FF5EFF, x00555455, x3C699796; \
@@ -924,7 +924,7 @@
 #elif CONFIG_OPENWALL_SBOX_2 == 5
 /* s3-001172, 46 gates, 17 regs, 10 andn, 2/3/19/55/98 stalls, 69 biop */
 #define s2(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x44444444, x0F0FF0F0, x4F4FF4F4, x00FFFF00, x00AAAA00, x4FE55EF4; \
     vtype x3C3CC3C3, x3C3C0000, x7373F4F4, x0C840A00; \
     vtype x00005EF4, x00FF5EFF, x00555455, x3C699796; \
@@ -996,7 +996,7 @@
 #elif CONFIG_OPENWALL_SBOX_2 == 6
 /* s3-001283, 46 gates, 16 regs, 14 andn, 2/5/10/30/69 stalls, 69 biop */
 #define s2(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x44444444, x0F0FF0F0, x4F4FF4F4, x00FFFF00, x00AAAA00, x4FE55EF4; \
     vtype x3C3CC3C3, x3C3C0000, x7373F4F4, x0C840A00; \
     vtype x00005EF4, x00FF5EFF, x00555455, x3C699796; \
@@ -1072,7 +1072,7 @@
 #if !defined(CONFIG_OPENWALL_SBOX_3) || CONFIG_OPENWALL_SBOX_3 == 1
 /* s4, 33 gates, 11/12 regs, 9 andn, 2/21/53/86/119 stalls, 52 biop */
 #define s3(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x5A5A5A5A, x0F0FF0F0; \
     vtype x33FF33FF, x33FFCC00, x0C0030F0, x0C0CC0C0, x0CF3C03F, x5EFBDA7F, \
         x52FBCA0F, x61C8F93C; \
@@ -1131,7 +1131,7 @@
 #if !defined(CONFIG_OPENWALL_SBOX_4) || CONFIG_OPENWALL_SBOX_4 == 1
 /* s5-02432, 48 gates, 15/16 regs, 9 andn, 6/22/61/109/160 stalls, 72 biop */
 #define s4(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x77777777, x77770000, x22225555, x11116666, x1F1F6F6F; \
     vtype x70700000, x43433333, x00430033, x55557777, x55167744, x5A19784B; \
     vtype x5A1987B4, x7A3BD7F5, x003B00F5, x221955A0, x05050707, x271C52A7; \
@@ -1205,7 +1205,7 @@
 #elif CONFIG_OPENWALL_SBOX_4 == 2
 /* s5-04829, 48 gates, 15/16 regs, 9 andn, 4/24/65/113/163 stalls, 72 biop */
 #define s4(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x77777777, x77770000, x22225555, x11116666, x1F1F6F6F; \
     vtype x70700000, x43433333, x00430033, x55557777, x55167744, x5A19784B; \
     vtype x5A1987B4, x7A3BD7F5, x003B00F5, x221955A0, x05050707, x271C52A7; \
@@ -1279,7 +1279,7 @@
 #elif CONFIG_OPENWALL_SBOX_4 == 3
 /* s5-04832, 48 gates, 15/16 regs, 9 andn, 5/23/62/109/159 stalls, 72 biop */
 #define s4(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x77777777, x77770000, x22225555, x11116666, x1F1F6F6F; \
     vtype x70700000, x43433333, x00430033, x55557777, x55167744, x5A19784B; \
     vtype x5A1987B4, x7A3BD7F5, x003B00F5, x221955A0, x05050707, x271C52A7; \
@@ -1357,7 +1357,7 @@
 #if !defined(CONFIG_OPENWALL_SBOX_5) || CONFIG_OPENWALL_SBOX_5 == 1
 /* s6-000007, 46 gates, 19 regs, 8 andn, 3/19/39/66/101 stalls, 69 biop */
 #define s5(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x33CC33CC; \
     vtype x3333FFFF, x11115555, x22DD6699, x22DD9966, x00220099; \
     vtype x00551144, x33662277, x5A5A5A5A, x7B7E7A7F, x59A31CE6; \
@@ -1431,7 +1431,7 @@
 #elif CONFIG_OPENWALL_SBOX_5 == 2
 /* s6-000009, 46 gates, 19 regs, 8 andn, 3/20/41/69/110 stalls, 69 biop */
 #define s5(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x33CC33CC; \
     vtype x3333FFFF, x11115555, x22DD6699, x22DD9966, x00220099; \
     vtype x00551144, x33662277, x5A5A5A5A, x7B7E7A7F, x59A31CE6; \
@@ -1505,7 +1505,7 @@
 #elif CONFIG_OPENWALL_SBOX_5 == 3
 /* s6-000028, 46 gates, 19 regs, 8 andn, 4/16/39/65/101 stalls, 69 biop */
 #define s5(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x33CC33CC; \
     vtype x3333FFFF, x11115555, x22DD6699, x22DD9966, x00220099; \
     vtype x00551144, x33662277, x5A5A5A5A, x7B7E7A7F, x59A31CE6; \
@@ -1579,7 +1579,7 @@
 #elif CONFIG_OPENWALL_SBOX_5 == 4
 /* s6-000031, 46 gates, 19 regs, 8 andn, 3/16/42/68/111 stalls, 69 biop */
 #define s5(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x33CC33CC; \
     vtype x3333FFFF, x11115555, x22DD6699, x22DD9966, x00220099; \
     vtype x00551144, x33662277, x5A5A5A5A, x7B7E7A7F, x59A31CE6; \
@@ -1657,7 +1657,7 @@
 #if !defined(CONFIG_OPENWALL_SBOX_6) || CONFIG_OPENWALL_SBOX_6 == 1
 /* s7-000072, 46 gates, 16 regs, 10 andn, 2/5/17/51/93 stalls, 69 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x00FF0000, x33CC3333, x3FCF3F3F, x55AA55AA, x55AAAA55, x6A65956A; \
     vtype x5AA5A55A, x05505005, x05AF5005, x018C1001, x01731001; \
     vtype x33FF33FF, x030F030F, x575F575F, x5250075A; \
@@ -1729,7 +1729,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 2
 /* s7-000788, 46 gates, 16 regs, 10 andn, 2/3/18/51/94 stalls, 69 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x00FF0000, x33CC3333, x3FCF3F3F, x55AA55AA, x55AAAA55, x6A65956A; \
     vtype x5AA5A55A, x05505005, x05AF5005, x018C1001, x01731001; \
     vtype x33FF33FF, x030F030F, x575F575F, x5250075A; \
@@ -1801,7 +1801,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 3
 /* s7-002149, 46 gates, 18 regs, 11 andn, 2/5/20/40/66 stalls, 68 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x00FF0000, x33CC3333, x3FCF3F3F, x55AA55AA, x55AAAA55, x6A65956A; \
     vtype x5AA5A55A, x05505005, x05AF5005, x018C1001, x01731001; \
     vtype x33FF33FF, x030F030F, x575F575F, x5250075A; \
@@ -1873,7 +1873,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 4
 /* s7-002689, 46 gates, 18 regs, 10 andn, 2/5/14/31/69 stalls, 69 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x00FF0000, x33CC3333, x3FCF3F3F, x55AA55AA, x55AAAA55, x6A65956A; \
     vtype x5AA5A55A, x05505005, x05AF5005, x018C1001, x01731001; \
     vtype x33FF33FF, x030F030F, x575F575F, x5250075A; \
@@ -1945,7 +1945,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 5
 /* s7-003344, 46 gates, 19 regs, 10 andn, 3/9/14/39/66 stalls, 68 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x00FF0000, x33CC3333, x3FCF3F3F, x55AA55AA, x55AAAA55, x6A65956A; \
     vtype x5AA5A55A, x05505005, x05AF5005, x018C1001, x01731001; \
     vtype x33FF33FF, x030F030F, x575F575F, x5250075A; \
@@ -2017,7 +2017,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 6
 /* s7-003395, 46 gates, 17 regs, 11 andn, 3/5/10/39/67 stalls, 70 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x00FF0000, x33CC3333, x3FCF3F3F, x55AA55AA, x55AAAA55, x6A65956A; \
     vtype x5AA5A55A, x05505005, x05AF5005, x018C1001, x01731001; \
     vtype x33FF33FF, x030F030F, x575F575F, x5250075A; \
@@ -2089,7 +2089,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 7
 /* s7-036457, 46 gates, 17 regs, 9 andn, 1/6/16/50/93 stalls, 71 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0FF00FF0, x3CC33CC3, x00003CC3, x0F000F00, x5A555A55, x00001841; \
     vtype x00000F00, x33333C33, x7B777E77, x0FF0F00F, x74878E78; \
     vtype x003C003C, x5A7D5A7D, x333300F0, x694E5A8D; \
@@ -2161,7 +2161,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 8
 /* s7-036496, 46 gates, 17 regs, 7 andn, 3/9/20/52/95 stalls, 70 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0FF00FF0, x3CC33CC3, x00003CC3, x0F000F00, x5A555A55, x00001841; \
     vtype x00000F00, x33333C33, x7B777E77, x0FF0F00F, x74878E78; \
     vtype x003C003C, x5A7D5A7D, x333300F0, x694E5A8D; \
@@ -2233,7 +2233,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 9
 /* s7-036532, 46 gates, 17 regs, 7 andn, 3/9/23/51/93 stalls, 71 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0FF00FF0, x3CC33CC3, x00003CC3, x0F000F00, x5A555A55, x00001841; \
     vtype x00000F00, x33333C33, x7B777E77, x0FF0F00F, x74878E78; \
     vtype x003C003C, x5A7D5A7D, x333300F0, x694E5A8D; \
@@ -2305,7 +2305,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 10
 /* s7-036610, 46 gates, 16 regs, 9 andn, 1/6/16/53/98 stalls, 70 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0FF00FF0, x3CC33CC3, x00003CC3, x0F000F00, x5A555A55, x00001841; \
     vtype x00000F00, x33333C33, x7B777E77, x0FF0F00F, x74878E78; \
     vtype x003C003C, x5A7D5A7D, x333300F0, x694E5A8D; \
@@ -2377,7 +2377,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 11
 /* s7-036634, 46 gates, 16 regs, 7 andn, 3/9/23/54/98 stalls, 70 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0FF00FF0, x3CC33CC3, x00003CC3, x0F000F00, x5A555A55, x00001841; \
     vtype x00000F00, x33333C33, x7B777E77, x0FF0F00F, x74878E78; \
     vtype x003C003C, x5A7D5A7D, x333300F0, x694E5A8D; \
@@ -2449,7 +2449,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 12
 /* s7-036649, 46 gates, 16 regs, 7 andn, 3/9/20/55/100 stalls, 69 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0FF00FF0, x3CC33CC3, x00003CC3, x0F000F00, x5A555A55, x00001841; \
     vtype x00000F00, x33333C33, x7B777E77, x0FF0F00F, x74878E78; \
     vtype x003C003C, x5A7D5A7D, x333300F0, x694E5A8D; \
@@ -2521,7 +2521,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 13
 /* s7-056931, 46 gates, 16 regs, 7 andn, 7/24/55/100/149 stalls, 67 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0FF00FF0, x3CC33CC3, x00003CC3, x0F000F00, x5A555A55, x00001841; \
     vtype x00000F00, x33333C33, x7B777E77, x0FF0F00F, x74878E78; \
     vtype x003C003C, x5A7D5A7D, x333300F0, x694E5A8D; \
@@ -2593,7 +2593,7 @@
 #elif CONFIG_OPENWALL_SBOX_6 == 14
 /* s7-056945, 46 gates, 16 regs, 7 andn, 10/31/62/107/156 stalls, 67 biop */
 #define s6(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0FF00FF0, x3CC33CC3, x00003CC3, x0F000F00, x5A555A55, x00001841; \
     vtype x00000F00, x33333C33, x7B777E77, x0FF0F00F, x74878E78; \
     vtype x003C003C, x5A7D5A7D, x333300F0, x694E5A8D; \
@@ -2669,7 +2669,7 @@
 #if !defined(CONFIG_OPENWALL_SBOX_7) || CONFIG_OPENWALL_SBOX_7 == 1
 /* s8-004798, 41 gates, 14 regs, 7 andn, 7/35/76/118/160 stalls, 59 biop */
 #define s7(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0C0C0C0C, x0000F0F0, x00FFF00F, x00555005, x00515001; \
     vtype x33000330, x77555775, x30303030, x3030CFCF, x30104745, x30555745; \
     vtype x30EFB74A, xCF1048B5, x080A080A, xC71A40BF, xCB164CB3; \
@@ -2734,7 +2734,7 @@
 #elif CONFIG_OPENWALL_SBOX_7 == 2
 /* s8-005322, 41 gates, 14 regs, 11 andn, 3/26/67/109/151 stalls, 62 biop */
 #define s7(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0C0C0C0C, x0000F0F0, x00FFF00F, x00555005, x00515001; \
     vtype x33000330, x77555775, x30303030, x3030CFCF, x30104745, x30555745; \
     vtype x30EFB74A, xCF1048B5, x080A080A, xC71A40BF, xCB164CB3; \
@@ -2799,7 +2799,7 @@
 #elif CONFIG_OPENWALL_SBOX_7 == 3
 /* s8-015415, 41 gates, 14 regs, 7 andn, 5/23/57/98/140 stalls, 60 biop */
 #define s7(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0C0C0C0C, x0000F0F0, x00FFF00F, x00555005, x00515001; \
     vtype x33000330, x77555775, x30303030, x3030CFCF, x30104745, x30555745; \
     vtype xFF000FF0, xCF1048B5, x080A080A, xC71A40BF, xCB164CB3; \
@@ -2864,7 +2864,7 @@
 #elif CONFIG_OPENWALL_SBOX_7 == 4
 /* s8-019374, 41 gates, 14 regs, 7 andn, 4/25/61/103/145 stalls, 59 biop */
 #define s7(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0C0C0C0C, x0000F0F0, x00FFF00F, x00555005, x00515001; \
     vtype x33000330, x77555775, x30303030, x3030CFCF, x30104745, x30555745; \
     vtype xFF000FF0, xCF1048B5, x080A080A, xC71A40BF, xCB164CB3; \
@@ -2929,7 +2929,7 @@
 #elif CONFIG_OPENWALL_SBOX_7 == 5
 /* s8-019630, 41 gates, 14 regs, 11 andn, 4/21/60/101/143 stalls, 62 biop */
 #define s7(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
     vtype x0C0C0C0C, x0000F0F0, x00FFF00F, x00555005, x00515001; \
     vtype x33000330, x77555775, x30303030, x3030CFCF, x30104745, x30555745; \
     vtype xFF000FF0, xCF1048B5, x080A080A, xC71A40BF, xCB164CB3; \
@@ -2998,23 +2998,23 @@
 /*
 #if !defined(CONFIG_OPENWALL_SBOX_0) || CONFIG_OPENWALL_SBOX_0 == 1
 #define s0(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
 } while(0)
 #elif CONFIG_OPENWALL_SBOX_0 == 2
 #define s0(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
 } while(0)
 #elif CONFIG_OPENWALL_SBOX_0 == 3
 #define s0(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
 } while(0)
 #elif CONFIG_OPENWALL_SBOX_0 == 4
 #define s0(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
 } while(0)
 #elif CONFIG_OPENWALL_SBOX_0 == 5
 #define s0(_a1, _a2, _a3, _a4, _a5, _a6, l1, l2, l3, l4, out1, out2, out3, out4) do { \
-    des_vector_t a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
+    des_vector a1 = _a1, a2 = _a2, a3 = _a3, a4 = _a4, a5 = _a5, a6 = _a6; \
 } while(0)
 #else
 #error "Invalid Openwall s-box 0 version configuration!"
