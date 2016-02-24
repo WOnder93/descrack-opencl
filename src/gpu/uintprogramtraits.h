@@ -13,7 +13,7 @@ namespace gpu {
 class UIntProgramTraits
 {
 public:
-    static constexpr std::size_t vectorBits = 5;
+    static constexpr std::size_t vectorLevel = 5;
 
     static cl::Program loadProgram(
             const DeviceListContext *dlContext, std::size_t bitsGlobal,
