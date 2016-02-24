@@ -28,6 +28,7 @@ ProcessingUnit::ProcessingUnit(const DeviceContext *context,
     groupSize = std::min(items, kernel.getWorkGroupInfo<CL_KERNEL_WORK_GROUP_SIZE>(device));
     groupCount = BLOCK_COUNT(groupSize, items);
 
+    std::size_t tmpBufferSize = groupSize * 32 * programContext->getVectorLength();
     cdBaseBufferSize = (56 - bitsGlobal) * programContext->getVectorLength();
     resultBufferSize = (MAX_FOUND_KEYS + 1) * sizeof(cl_uint);
 
@@ -36,9 +37,11 @@ ProcessingUnit::ProcessingUnit(const DeviceContext *context,
 
     kernel.setArg<cl::Buffer>(0, programContext->getRefInputBuffer());
     kernel.setArg<cl::Buffer>(1, programContext->getRefOutputBuffer());
-    kernel.setArg<cl::Buffer>(2, cdBaseBuffer);
-    kernel.setArg<cl::Buffer>(3, resultBuffer);
-    kernel.setArg<cl_uint>   (4, static_cast<cl_uint>(bitsThread));
+    kernel.setArg<cl::LocalSpaceArg>(2, {tmpBufferSize});
+    kernel.setArg<cl::LocalSpaceArg>(3, {tmpBufferSize});
+    kernel.setArg<cl::Buffer>(4, cdBaseBuffer);
+    kernel.setArg<cl::Buffer>(5, resultBuffer);
+    kernel.setArg<cl_uint>   (6, static_cast<cl_uint>(bitsThread));
 }
 
 void ProcessingUnit::setBatch(std::uint_fast64_t index)

@@ -60,10 +60,12 @@
 
 __kernel
 void des_kernel(
-        __constant des_vector *input,
-        __constant des_vector *output,
-        __constant uint *cd_base,
-        __global uint *result_buffer,
+        __constant  des_vector *input,
+        __constant  des_vector *output,
+        __local     des_vector *tmp0,
+        __local     des_vector *tmp1,
+        __constant  uint *cd_base,
+        __global    uint *result_buffer,
         uint bits_thread)
 {
     size_t id = get_global_id(0);
@@ -81,9 +83,9 @@ void des_kernel(
     uint count = (uint)1 << bits_thread;
     uint cd_l = (uint)id << bits_thread;
     uint cd_u = cd_l + count;
+    __local des_vector *b0 = tmp0[get_local_id(0) * 32];
+    __local des_vector *b1 = tmp1[get_local_id(0) * 32];
     for (uint cd = cd_l; cd < cd_u; cd++) {
-        des_vector b0[32];
-        des_vector b1[32];
         S_BOXES(0, cd, cd_base, i0, i1, b0);
         S_BOXES(1, cd, cd_base, i1, b0, b1);
         S_BOXES(2, cd, cd_base, b0, b1, b0);
