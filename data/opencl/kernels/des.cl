@@ -28,33 +28,33 @@
     select(v_zero, v_ones, (cd) & ((uint)0x1u << (bit))) \
 )
 
-#define S_BOX(box, round, cd, cd_base, l0, r0, r) do { \
+#define S_BOX(box, round, cd, cd_base, l0, r0, r, ol0, or0, or) do { \
     s##box( \
-    v_xor(r0[EP(box, 0)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 0))), \
-    v_xor(r0[EP(box, 1)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 1))), \
-    v_xor(r0[EP(box, 2)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 2))), \
-    v_xor(r0[EP(box, 3)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 3))), \
-    v_xor(r0[EP(box, 4)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 4))), \
-    v_xor(r0[EP(box, 5)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 5))), \
-    l0[PI(box, 0)], \
-    l0[PI(box, 1)], \
-    l0[PI(box, 2)], \
-    l0[PI(box, 3)], \
-    r[PI(box, 0)], \
-    r[PI(box, 1)], \
-    r[PI(box, 2)], \
-    r[PI(box, 3)]); \
+    v_xor(r0[EP(box, 0) * (or0)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 0))), \
+    v_xor(r0[EP(box, 1) * (or0)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 1))), \
+    v_xor(r0[EP(box, 2) * (or0)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 2))), \
+    v_xor(r0[EP(box, 3) * (or0)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 3))), \
+    v_xor(r0[EP(box, 4) * (or0)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 4))), \
+    v_xor(r0[EP(box, 5) * (or0)], EXTRACT_CD(cd, cd_base, KEY_SCHEDULE(round, box, 5))), \
+    l0[PI(box, 0) * (ol0)], \
+    l0[PI(box, 1) * (ol0)], \
+    l0[PI(box, 2) * (ol0)], \
+    l0[PI(box, 3) * (ol0)], \
+    r [PI(box, 0) * (or)], \
+    r [PI(box, 1) * (or)], \
+    r [PI(box, 2) * (or)], \
+    r [PI(box, 3) * (or)]); \
 } while(0)
 
-#define S_BOXES(round, cd, cd_base, l0, r0, r) do { \
-    S_BOX(0, round, cd, cd_base, l0, r0, r); \
-    S_BOX(1, round, cd, cd_base, l0, r0, r); \
-    S_BOX(2, round, cd, cd_base, l0, r0, r); \
-    S_BOX(3, round, cd, cd_base, l0, r0, r); \
-    S_BOX(4, round, cd, cd_base, l0, r0, r); \
-    S_BOX(5, round, cd, cd_base, l0, r0, r); \
-    S_BOX(6, round, cd, cd_base, l0, r0, r); \
-    S_BOX(7, round, cd, cd_base, l0, r0, r); \
+#define S_BOXES(round, cd, cd_base, l0, r0, r, ol0, or0, or) do { \
+    S_BOX(0, round, cd, cd_base, l0, r0, r, ol0, or0, or); \
+    S_BOX(1, round, cd, cd_base, l0, r0, r, ol0, or0, or); \
+    S_BOX(2, round, cd, cd_base, l0, r0, r, ol0, or0, or); \
+    S_BOX(3, round, cd, cd_base, l0, r0, r, ol0, or0, or); \
+    S_BOX(4, round, cd, cd_base, l0, r0, r, ol0, or0, or); \
+    S_BOX(5, round, cd, cd_base, l0, r0, r, ol0, or0, or); \
+    S_BOX(6, round, cd, cd_base, l0, r0, r, ol0, or0, or); \
+    S_BOX(7, round, cd, cd_base, l0, r0, r, ol0, or0, or); \
 } while(0)
 
 
@@ -83,32 +83,35 @@ void des_kernel(
     uint count = (uint)1 << bits_thread;
     uint cd_l = (uint)id << bits_thread;
     uint cd_u = cd_l + count;
-    __local des_vector * const b0 = tmp0 + get_local_id(0) * 32;
-    __local des_vector * const b1 = tmp1 + get_local_id(0) * 32;
+
+    size_t local_id = get_local_id(0);
+    size_t local_size = get_local_size(0);
+    __local des_vector * const b0 = tmp0 + local_id;
+    __local des_vector * const b1 = tmp1 + local_id;
     for (uint cd = cd_l; cd < cd_u; cd++) {
-        S_BOXES(0, cd, cd_base, i0, i1, b0);
-        S_BOXES(1, cd, cd_base, i1, b0, b1);
-        S_BOXES(2, cd, cd_base, b0, b1, b0);
-        S_BOXES(3, cd, cd_base, b1, b0, b1);
-        S_BOXES(4, cd, cd_base, b0, b1, b0);
-        S_BOXES(5, cd, cd_base, b1, b0, b1);
-        S_BOXES(6, cd, cd_base, b0, b1, b0);
-        S_BOXES(7, cd, cd_base, b1, b0, b1);
-        S_BOXES(8, cd, cd_base, b0, b1, b0);
-        S_BOXES(9, cd, cd_base, b1, b0, b1);
-        S_BOXES(A, cd, cd_base, b0, b1, b0);
-        S_BOXES(B, cd, cd_base, b1, b0, b1);
-        S_BOXES(C, cd, cd_base, b0, b1, b0);
-        S_BOXES(D, cd, cd_base, b1, b0, b1);
-        S_BOXES(E, cd, cd_base, b0, b1, b0);
-        S_BOXES(F, cd, cd_base, b1, b0, b1);
+        S_BOXES(0, cd, cd_base, i0, i1, b0,          1,          1, local_size);
+        S_BOXES(1, cd, cd_base, i1, b0, b1,          1, local_size, local_size);
+        S_BOXES(2, cd, cd_base, b0, b1, b0, local_size, local_size, local_size);
+        S_BOXES(3, cd, cd_base, b1, b0, b1, local_size, local_size, local_size);
+        S_BOXES(4, cd, cd_base, b0, b1, b0, local_size, local_size, local_size);
+        S_BOXES(5, cd, cd_base, b1, b0, b1, local_size, local_size, local_size);
+        S_BOXES(6, cd, cd_base, b0, b1, b0, local_size, local_size, local_size);
+        S_BOXES(7, cd, cd_base, b1, b0, b1, local_size, local_size, local_size);
+        S_BOXES(8, cd, cd_base, b0, b1, b0, local_size, local_size, local_size);
+        S_BOXES(9, cd, cd_base, b1, b0, b1, local_size, local_size, local_size);
+        S_BOXES(A, cd, cd_base, b0, b1, b0, local_size, local_size, local_size);
+        S_BOXES(B, cd, cd_base, b1, b0, b1, local_size, local_size, local_size);
+        S_BOXES(C, cd, cd_base, b0, b1, b0, local_size, local_size, local_size);
+        S_BOXES(D, cd, cd_base, b1, b0, b1, local_size, local_size, local_size);
+        S_BOXES(E, cd, cd_base, b0, b1, b0, local_size, local_size, local_size);
+        S_BOXES(F, cd, cd_base, b1, b0, b1, local_size, local_size, local_size);
 
         des_vector match = v_zero;
         for (size_t i = 0; i < 32; i++) {
-            match = v_or(match, v_xor(b0[i], o1[i]));
+            match = v_or(match, v_xor(b0[i * local_size], o1[i]));
         }
         for (size_t i = 0; i < 32; i++) {
-            match = v_or(match, v_xor(b1[i], o0[i]));
+            match = v_or(match, v_xor(b1[i * local_size], o0[i]));
         }
         if (v_isnot_ones(match)) {
             uint pos = 0;
