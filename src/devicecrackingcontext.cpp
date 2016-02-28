@@ -31,7 +31,7 @@ void DeviceCrackingContext::runCracking(KeyBatchDistributor *kbDistributor)
             }
         }
         if (!lastLoop) {
-            std::size_t batch;
+            std::uint_fast64_t batch;
             if (kbDistributor->getNextBatch(batch)) {
                 pu1.setBatch(batch);
                 pu1.beginProcessing();
@@ -48,7 +48,7 @@ void DeviceCrackingContext::runCracking(KeyBatchDistributor *kbDistributor)
             }
         }
         if (!lastLoop) {
-            std::size_t batch;
+            std::uint_fast64_t batch;
             if (kbDistributor->getNextBatch(batch)) {
                 pu2.setBatch(batch);
                 pu2.beginProcessing();

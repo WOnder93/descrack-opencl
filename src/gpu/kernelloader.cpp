@@ -36,7 +36,7 @@ cl::Program KernelLoader::loadProgram(
                 std::cerr << buildLog << std::endl;
             }
         }
-        throw err;
+        throw;
     }
     return prog;
 }

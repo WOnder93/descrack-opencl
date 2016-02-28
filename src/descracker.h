@@ -46,7 +46,7 @@ public:
             std::uint_fast64_t getKey() const { return key; }
 
             Session(const Configuration *parent, const KeyData *keyData,
-                    std::size_t batchFrom, std::size_t batchTo);
+                    std::uint_fast64_t batchFrom, std::uint_fast64_t batchTo);
 
             void requestStopCracking();
             void finishCracking();

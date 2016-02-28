@@ -11,7 +11,7 @@ namespace opencl {
 
 DesCracker::Configuration::Session::Session(
         const Configuration *parent, const KeyData *keyData,
-        std::size_t batchFrom, std::size_t batchTo)
+        std::uint_fast64_t batchFrom, std::uint_fast64_t batchTo)
     : parent(parent), threads(), devContexts(),
       kbDistributor(batchFrom, batchTo),
       keyMutex(), key(), keyFound(false)
@@ -78,7 +78,7 @@ double DesCracker::Configuration::benchmark(std::uint_fast64_t batches) const
     KeyData keyData(0, 0xE5C48D8397B26531ULL);
     clock_type::time_point checkpt0 = clock_type::now();
     {
-        Session session(this, &keyData, 1, batches);
+        Session session(this, &keyData, 1, batches + 1);
         session.finishCracking();
     }
     clock_type::time_point checkpt1 = clock_type::now();
