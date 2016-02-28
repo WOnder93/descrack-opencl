@@ -10,13 +10,13 @@ namespace opencl {
 class KeyBatchDistributor
 {
 private:
-    std::atomic_size_t next;
-    std::size_t limit;
+    std::atomic_uint_fast64_t next;
+    std::uint_fast64_t limit;
 
 public:
-    KeyBatchDistributor(std::size_t from, std::size_t to);
+    KeyBatchDistributor(std::uint_fast64_t from, std::uint_fast64_t to);
 
-    bool getNextBatch(std::size_t &res);
+    bool getNextBatch(std::uint_fast64_t &res);
 };
 
 } // namespace opencl

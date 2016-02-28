@@ -20,7 +20,7 @@ public:
     const std::vector<cl::Device> &getAllDevices() const { return devices; }
     const std::string &getDataDirectory() const { return dataDirectory; }
 
-    GlobalContext(const std::string &dataDirectory);
+    explicit GlobalContext(const std::string &dataDirectory);
 };
 
 } // namespace gpu

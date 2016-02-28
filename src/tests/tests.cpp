@@ -41,7 +41,7 @@ void Tests::testCrack(const std::string &name,
     auto batch = cracker.getBatchFromKey(key);
 
     DesCracker::Configuration::Session session(&config, &keyData,
-                                               batch, batch + 1);
+                                               batch, batch + 2);
     session.finishCracking();
 
     bool found = session.wasKeyFound();
